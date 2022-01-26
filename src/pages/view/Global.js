@@ -3,6 +3,11 @@ import { Bar, Line, Pie, Polar } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { indoDataMain, indoDataDaily } from "../../services/data";
 import Select, { components } from 'react-select'
+import { 
+  ResponsiveContainer, AreaChart, XAxis, YAxis, Area, Tooltip, CartesianGrid
+} from 'recharts';
+import Info from "../../components/Info";
+
 
 const optionsSort = [
   { value: 7, label: 'Last 7 days' },
@@ -17,23 +22,31 @@ const optionsData = [
 
 const Global = () => {
   const [data, setData] = useState([])
-  const [sort, setSort] = useState([])
-  const [status, setStatus] = useState([])
+  const [sort, setSort] = useState(7)
+  const [status, setStatus] = useState('Case')
+  const [dataSorted, setDataSorted] = useState([])
+  const filteredData = [];
 
   useEffect(() => {
-    const getData = async () => {
-      const dataFromServer = await indoDataDaily()
-      setData(dataFromServer)
-    }
-
     getData()
-    setStatus("Case")
-    setSort(7)
+    filterData(data)
+    setDataSorted(filteredData);
+    
   }, [])
+
+
+  const getData = async () => {
+    const dataFromServer = await indoDataDaily()
+    setData(dataFromServer)
+  }
   
   const handleSortChange = value => {
+    filterData(data)
     setSort(value.value)
+    setDataSorted(filteredData);
+    dataSorted.map((d) => console.log(d.positif))
   }
+
   const handleDataChange = value => {
     setStatus(value.value)
   }
@@ -44,6 +57,7 @@ const Global = () => {
     let dateComplete = dateConv.getDate() + " " + dateConv.getMonth() + " " + dateConv.getFullYear();
 
     if(index >= data.length - sort){
+      // filteredData.push(data);
       return `
         Index: ${index}
         ${status}: ${status === 'Case' ? tot.positif : status === 'Deaths' ? tot.meninggal : tot.sembuh }.
@@ -53,6 +67,23 @@ const Global = () => {
     }
   });
 
+  const filterData = (data) => {
+    const mapData = data.map((tot, index) => {
+      if(index >= data.length - sort){
+        filteredData.push(tot)
+      }
+    });
+  }
+
+  const MapData = ({ data, status }) => {
+    return (
+      <>
+        {data.map((d)=> (
+          <Info key={d.tanggal} data={d} status={status} />
+        ))}
+      </>
+    )
+  }
     return(
         <div>
             <h1>{dataMap}</h1>
@@ -62,14 +93,31 @@ const Global = () => {
                 options={optionsData}
                 onChange={handleDataChange}
                 placeholder="Select Type of Data"
-                autoFocus
               />
               <Select 
                 options={optionsSort} 
                 onChange={handleSortChange}
-                autoFocus
                 placeholder="Select Time Range"
               />
+
+              <ResponsiveContainer width="100%" height={400}>
+                <AreaChart data={dataSorted}>
+                  <defs>
+                    <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#2451B7" stopOpacity={0.7} />
+                      <stop offset="60%" stopColor="#2451B7" stopOpacity={0.4} />
+                      <stop offset="80%" stopColor="#2451B7" stopOpacity={0.05} />
+                    </linearGradient>
+                  </defs>
+                  <Area dataKey="positif" stroke="#2451B7" fill="url(#color)"/>
+                  <XAxis dataKey="tanggal" />
+                  <YAxis dataKey="positif" axisLine={false} tickLine={false} />
+                  <Tooltip />
+                  <CartesianGrid opacity={0.4} vertical={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+              <MapData data={dataSorted} status={status} />
+              <h1></h1>
               {/* <Line 
                 data={{ 
                   labels: ['Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow'],
