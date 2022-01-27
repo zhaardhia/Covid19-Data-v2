@@ -5,7 +5,7 @@ import Global from "./view/Global"
 
 const IndexPage = () => {
   return(
-    <Layout>
+    <Layout className="layout">
       <div>
         {/* <h1 className="text-3xl font-bold underline">WKWKKWKWKWKWKKW</h1> */}
         <Global />
