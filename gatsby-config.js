@@ -5,7 +5,8 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sass",
-    "gatsby-plugin-postcss"
+    "gatsby-plugin-postcss",
+    "@chakra-ui/gatsby-plugin"
   ],
   
 };

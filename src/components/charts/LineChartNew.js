@@ -6,7 +6,7 @@ import {
 const LineChartNew = ({ data, status }) => {
   
   return <div>
-    <ResponsiveContainer width="80%" height={400}>
+    <ResponsiveContainer width="90%" height={400}>
                 <AreaChart data={data} margin={{
                   top: 60,
                   left: 30,

@@ -1,5 +1,4 @@
 import React from "react";
-import { Bar, Line, Pie, Polar } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { indoDataMain, indoDataDaily } from "../../services/data";
 import Select, { components } from 'react-select'
@@ -7,6 +6,8 @@ import Info from "../../components/Info";
 import LineChartNew from "../../components/charts/LineChartNew";
 import LineChartTotal from "../../components/charts/LineChartTotal";
 import { dateShort } from "../../utils/dateShort";
+import IndoMain from "../../components/IndoMain";
+import filterData from "../../utils/filterData";
 
 
 const optionsSort = [
@@ -32,6 +33,7 @@ const Indonesia = () => {
   useEffect(() => {
     getData()
     getDataMain()
+    // console.log(dataMain)
   }, [])
 
   useEffect(() => {
@@ -49,7 +51,6 @@ const Indonesia = () => {
   const getDataMain = async () => {
     const dataFromServer = await indoDataMain()
     setDataMain(dataFromServer)
-    console.log(dataMain)
   }
   
   const handleSortChange = value => {
@@ -104,11 +105,14 @@ const Indonesia = () => {
     }
   };
     return(
-        <div>
-          <h1>Indonesia Data</h1>
-          <h3>Last Update: </h3>
-            
-            <div>
+        <div className="">
+          <div className="text-center mb-8 mt-8">
+            <h1>Indonesia Data</h1>
+            <h3>Last Update: {dateShort(dataMain.total?.lastUpdate)}</h3>
+          </div>
+          <IndoMain dataMain={dataMain} />
+            <div className="w-5/6">
+              <div>
               <h2>Statistics</h2>
               <div className="flex">
                 <h3>New Cases, Deaths, and Recovered</h3>
@@ -127,13 +131,13 @@ const Indonesia = () => {
                   />
                 </div>
               </div>
-              
               <h1>{status}</h1>
               <h1>New</h1>
               <LineChartNew data={dataSorted} status={status} />
               <h1>Total</h1>
               <LineChartTotal data={dataSorted} status={status}/>
               <MapData data={dataSorted} status={status} />
+              </div>
             </div>
         </div>
     )
