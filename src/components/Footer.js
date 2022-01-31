@@ -1,13 +1,14 @@
+import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-800 text-white p-6 font-thin">
-            <div className="text-center">
-                <h2>&copy;2021, firzhaardhia</h2>
-                <p>Data API from shahmirfaisal & Reynadi531</p>
-            </div>
-        </footer>
+        <Box as="footer" background="#2C5282" color="white" p="5">
+            <Box >
+                <Text align="center">&copy;2021, firzhaardhia</Text>
+                <Text align="center">Data API from shahmirfaisal & Reynadi531</Text>
+            </Box>
+        </Box>
     )
 }
 

@@ -1,18 +1,25 @@
 import React from "react";
 import { Link } from "gatsby";
+import { Box, Text, Flex } from "@chakra-ui/react";
+import { StaticImage } from "gatsby-plugin-image";
+import { ThemeToggle } from "./theme-toggle";
 
 const Navbar = () => {
     return (
-        <header className="flex flex-col items-center bg-gray-800 text-white p-6">
+        <Flex as="header" background="#2C5282" color="white" p="5" alignItems="center" justifyContent="center">
+            <StaticImage src="../images/world.png" alt="World Image" width={100}/>
             <div className="text-center">
-                <h1 className="font-light text-2xl">Covid - 19 Statistics</h1>
-                <p className="font-thin">Stay Safe, Covid Still Alive</p>
+                <Text fontSize='2xl' align="center">Covid - 19 Statistics</Text>
+                <Text fontSize='1xl' align="center">Stay Safe, Covid Still Alive</Text>
             </div>
             {/* <nav className="text-right">
                 <Link className="m-10 hover:text-sky-400" to="/">Global</Link>
                 <Link className="m-10 hover:text-sky-400" to="/test">Indonesia</Link>
             </nav> */}
-        </header>
+            <Box as="div" position="fixed" right="30px" top="50px">
+                <ThemeToggle />
+            </Box>
+        </Flex>
     )
 }
 

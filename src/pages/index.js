@@ -5,11 +5,11 @@ import Indonesia from "./view/Indonesia"
 
 const IndexPage = () => {
   return(
-    <Layout className="layout">
+    <>
       <div>
         <Indonesia />
       </div>
-    </Layout>
+    </>
   )
 }
 
