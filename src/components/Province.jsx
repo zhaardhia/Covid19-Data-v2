@@ -47,13 +47,13 @@ const Province = () => {
         />
       </div>
       <div>
-        <h1>{selectedValue.provinsi}</h1>
-        <p>Last Update: {selectedValue.last_date}</p>
+        <h1>{selectedValue?.provinsi}</h1>
+        <p>Last Update: {selectedValue?.last_date}</p>
         <div>
           <div>
             <p>{selectedValue?.kasus}</p>
             <p>Case</p>
-            <p>+{selectedValue.penambahan?.positif}</p>
+            <p>+{selectedValue?.penambahan?.positif}</p>
           </div>
           <div>
             <p>{selectedValue?.dirawat}</p>
@@ -62,12 +62,12 @@ const Province = () => {
           <div>
             <p>{selectedValue?.sembuh}</p>
             <p>Recovered</p>
-            <p>+{selectedValue.penambahan?.sembuh}</p>
+            <p>+{selectedValue?.penambahan?.sembuh}</p>
           </div>
           <div>
             <p>{selectedValue?.meninggal}</p>
             <p>Death</p>
-            <p>+{selectedValue.penambahan?.meninggal}</p>
+            <p>+{selectedValue?.penambahan?.meninggal}</p>
           </div>
         </div>
         <BarChartProvince dataProvince={selectedValue} />
