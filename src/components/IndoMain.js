@@ -4,7 +4,6 @@ import PieChartIndoMain from './charts/PieChartIndoMain';
 const IndoMain = ({ dataMain }) => {
   return (
     <div className="flex justify-center">
-      <PieChartIndoMain className="w-3" dataMain={dataMain} />
       <div className="grid grid-cols-2 gap-5 items-center text-center">
         <div>
           <p>{dataMain.total?.positif}</p>
@@ -27,6 +26,7 @@ const IndoMain = ({ dataMain }) => {
           <p>+{dataMain.penambahan?.meninggal}</p>
         </div>
       </div>
+      <PieChartIndoMain className="w-3" dataMain={dataMain} />
     </div>
   );
 };

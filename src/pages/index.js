@@ -7,7 +7,6 @@ const IndexPage = () => {
   return(
     <Layout className="layout">
       <div>
-        {/* <h1 className="text-3xl font-bold underline">WKWKKWKWKWKWKKW</h1> */}
         <Indonesia />
       </div>
     </Layout>

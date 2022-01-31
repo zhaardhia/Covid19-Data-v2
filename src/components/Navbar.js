@@ -3,8 +3,8 @@ import { Link } from "gatsby";
 
 const Navbar = () => {
     return (
-        <header className="flex items-center bg-gray-800 text-white p-6">
-            <div className="container text-center">
+        <header className="flex flex-col items-center bg-gray-800 text-white p-6">
+            <div className="text-center">
                 <h1 className="font-light text-2xl">Covid - 19 Statistics</h1>
                 <p className="font-thin">Stay Safe, Covid Still Alive</p>
             </div>

@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 import { indoDataMain, indoDataDaily } from "../../services/data";
 import Select, { components } from 'react-select'
 import Info from "../../components/Info";
@@ -8,6 +10,9 @@ import LineChartTotal from "../../components/charts/LineChartTotal";
 import { dateShort } from "../../utils/dateShort";
 import IndoMain from "../../components/IndoMain";
 import filterData from "../../utils/filterData";
+import Province from "../../components/Province";
+import BarChartProvince from "../../components/charts/BarChartProvince";
+import indoFlag from "../../images/indocovid.png";
 
 
 const optionsSort = [
@@ -106,9 +111,12 @@ const Indonesia = () => {
   };
     return(
         <div className="">
-          <div className="text-center mb-8 mt-8">
-            <h1>Indonesia Data</h1>
-            <h3>Last Update: {dateShort(dataMain.total?.lastUpdate)}</h3>
+          <div className="flex mb-8 mt-8">
+            <StaticImage src="../../images/indocovid.png" alt="Indonesia flag with mask image" />
+            <div>
+              <h1>Indonesia Data</h1>
+              <h3>Last Update: {dateShort(dataMain.total?.lastUpdate)}</h3>
+            </div>
           </div>
           <IndoMain dataMain={dataMain} />
             <div className="w-5/6">
@@ -136,9 +144,10 @@ const Indonesia = () => {
               <LineChartNew data={dataSorted} status={status} />
               <h1>Total</h1>
               <LineChartTotal data={dataSorted} status={status}/>
-              <MapData data={dataSorted} status={status} />
+              {/* <MapData data={dataSorted} status={status} /> */}
               </div>
             </div>
+          <Province />
         </div>
     )
 }
