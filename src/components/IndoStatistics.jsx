@@ -5,6 +5,7 @@ import Select, { components } from 'react-select'
 import LineChartNew from "../components/charts/LineChartNew";
 import LineChartTotal from "../components/charts/LineChartTotal";
 import filterData from "../utils/filterData";
+import { Flex, Text, Box } from '@chakra-ui/react';
 
 const optionsSort = [
   { value: 7, label: 'Last 7 days' },
@@ -55,10 +56,12 @@ const IndoStatistics = () => {
   const colourStyles = {
     backgroundColor: "#22AABD",
     control: (styles) => ({ 
-      ...styles, backgroundColor: "#22AABD",
-      width: "10rem",
+      ...styles, 
+      // backgroundColor: "#22AABD",
+      width: "8rem",
       marginLeft: "0.5rem",
-      borderRadius: "10px"
+      borderRadius: "10px",
+      fontSize: "0.8rem",
     }),
     option: (styles, { isDisabled }) => {
       return {
@@ -69,31 +72,39 @@ const IndoStatistics = () => {
         width: "100%",
         height: "100%",
         marginLeft: "",
+        fontSize: "0.8rem"
       };
     }
   };
   return (
-    <div>
-      <h2>Statistics</h2>
-      <div className="flex">
-        <Select 
-          defaultValue={optionsData[0]} 
-          options={optionsData}
-          onChange={handleDataChange}
-          styles={colourStyles}
-        />
-        <Select 
-          defaultValue={optionsSort[0]} 
-          options={optionsSort} 
-          onChange={handleSortChange}
-          styles={colourStyles}
-        />
-      </div>
-      <h1>New {status}</h1>
-      <LineChartNew data={dataSorted} status={status} />
-      <h1>Total {status}</h1>
-      <LineChartTotal data={dataSorted} status={status}/>
-    </div>
+    <Box width="100%">
+      <Flex justifyContent="space-between" mb="2rem">
+        <Text fontSize="3xl" fontWeight="light">Statistics</Text>
+        <Flex >
+          <Select 
+            defaultValue={optionsData[0]} 
+            options={optionsData}
+            onChange={handleDataChange}
+            styles={colourStyles}
+          />
+          <Select 
+            defaultValue={optionsSort[0]} 
+            options={optionsSort} 
+            onChange={handleSortChange}
+            styles={colourStyles}
+          />
+        </Flex>
+      </Flex>
+      <Box borderRadius="20px" p="">
+        <Text fontSize="lg" fontWeight="thin">New {status}</Text>
+        <LineChartNew data={dataSorted} status={status} />
+      </Box>
+      <Box borderRadius="20px" p="" m="3rem 0">
+        <Text fontSize="lg" fontWeight="thin">Total {status}</Text>
+        <LineChartTotal data={dataSorted} status={status}/>
+      </Box>
+      
+    </Box>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { Bar, Line, Pie, Polar } from "react-chartjs-2";
 // import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'recharts';
@@ -7,7 +8,7 @@ const PieChartIndoMain = ({ dataMain }) => {
   const dataMainAdded = dataMain.penambahan
   console.log(dataMainTotal, dataMainAdded)
   return (
-    <div>
+    <Box width="100%" mt="2rem">
       <Pie
         data={{
           labels: ['Case', 'Active', 'Recovered', 'Death'],
@@ -50,7 +51,7 @@ const PieChartIndoMain = ({ dataMain }) => {
           },
         }}
       />
-    </div>
+    </Box>
   );
 };
 

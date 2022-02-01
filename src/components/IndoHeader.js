@@ -1,16 +1,19 @@
 import React from 'react';
 import { StaticImage } from "gatsby-plugin-image";
 import { dateShort } from "../utils/dateShort";
+import { Flex, Text, Box } from '@chakra-ui/react';
 
 const IndoHeader = ({ dataMain }) => {
   return (
-    <div className="flex mb-8 mt-8">
-      <StaticImage src="../images/indocovid.png" alt="Indonesia flag with mask image" />
-      <div>
-        <h1>Indonesia Data</h1>
-        <h3>Last Update: {dateShort(dataMain.total?.lastUpdate)}</h3>
-      </div>
-    </div>
+    <Flex m="2rem 0 1rem 0" justifyContent="center">
+      <Flex width="20%" justifyContent="center">
+        <StaticImage src="../images/indocovid.png" alt="Indonesia flag with mask image" width={160} />
+      </Flex>
+      <Box alignSelf="center" width="40%" ml="7rem">
+        <Text fontSize="3xl">Indonesia Data</Text>
+        <Text mt="10px" fontSize="sm" fontWeight="light">Last Update: {dateShort(dataMain.total?.lastUpdate)}</Text>
+      </Box>
+    </Flex>
   );
 };
 
