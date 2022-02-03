@@ -72,15 +72,16 @@ const IndoStatistics = () => {
         width: "100%",
         height: "100%",
         marginLeft: "",
-        fontSize: "0.8rem"
+        fontSize: "0.8rem",
+        color: "black"
       };
     }
   };
   return (
     <Box width="100%">
-      <Flex justifyContent="space-between" mb="2rem">
+      <Flex flexDirection={['column', 'row', 'row']} justifyContent="space-between" mb="2rem">
         <Text fontSize="3xl" fontWeight="light">Statistics</Text>
-        <Flex >
+        <Flex ml='-0.5rem'>
           <Select 
             defaultValue={optionsData[0]} 
             options={optionsData}

@@ -22,12 +22,12 @@ const Indonesia = () => {
     return(
         <div className="">
           <IndoHeader dataMain={dataMain} />
-          <Flex width="100%" justifyContent="center">
+          <Flex width="100%" justifyContent="center" flexDirection={['column', 'column', 'row']} >
             <IndoMain dataMain={dataMain} />
-            <Box width="40%" ml="7rem">
+            <Flex flexDirection="column" width={['85%', '80%', '40%']} ml={['auto', 'auto', '7rem']} mr={['auto', 'auto', '0']} >
               <IndoStatistics />
               <Province />
-            </Box>
+            </Flex>
           </Flex>
         </div>
     )
