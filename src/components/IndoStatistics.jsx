@@ -79,7 +79,7 @@ const IndoStatistics = () => {
   };
   return (
     <Box width="100%">
-      <Flex flexDirection={['column', 'row', 'row']} justifyContent="space-between" mb="2rem">
+      <Flex flexDirection={['column', 'row', 'column', 'row']} justifyContent="space-between" mb="2rem">
         <Text fontSize="3xl" fontWeight="light">Statistics</Text>
         <Flex ml='-0.5rem'>
           <Select 
@@ -100,7 +100,7 @@ const IndoStatistics = () => {
         <Text fontSize="lg" fontWeight="thin">New {status}</Text>
         <LineChartNew data={dataSorted} status={status} />
       </Box>
-      <Box borderRadius="20px" p="" m="3rem 0">
+      <Box borderRadius="20px" p="">
         <Text fontSize="lg" fontWeight="thin">Total {status}</Text>
         <LineChartTotal data={dataSorted} status={status}/>
       </Box>

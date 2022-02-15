@@ -8,7 +8,7 @@ const PieChartIndoMain = ({ dataMain }) => {
   const dataMainAdded = dataMain.penambahan
   console.log(dataMainTotal, dataMainAdded)
   return (
-    <Box width="100%" mt="2rem">
+    <Box width="100%" height={['12rem', '15rem', '20rem']} mt="2rem">
       <Pie
         data={{
           labels: ['Case', 'Active', 'Recovered', 'Death'],
@@ -17,17 +17,17 @@ const PieChartIndoMain = ({ dataMain }) => {
               label: '# of votes',
               data: [dataMainAdded?.positif, dataMainAdded?.dirawat, dataMainAdded?.sembuh, dataMainAdded?.meninggal],
               backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.7)',
+                'rgba(228, 113, 30, 0.7)',
+                'rgba(218, 147, 96, 0.5)',
+                'rgba(34, 170, 189, 0.5)',
+                'rgba(189, 34, 34, 0.7)',
                 
               ],
               borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
+                'rgba(228, 113, 30, 1)',
+                'rgba(218, 147, 96, 1)',
+                'rgba(34, 170, 189, 1)',
+                'rgba(189, 34, 34, 1)',
                 
               ],
               borderWidth: 1,
@@ -40,8 +40,8 @@ const PieChartIndoMain = ({ dataMain }) => {
             // },
           ],
         }}
-        // height={200}
-        // width={100}
+        height="100%"
+        width={100}
         options={{
           maintainAspectRatio: false,
           legend: {

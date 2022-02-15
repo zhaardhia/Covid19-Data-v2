@@ -1,15 +1,28 @@
 import React from 'react';
+import { Box } from '@chakra-ui/react';
 import { 
   ResponsiveContainer, AreaChart, XAxis, YAxis, Area, Tooltip, CartesianGrid
 } from 'recharts';
 
 const LineChartNew = ({ data, status }) => {
+
+  const CustomTooltip = ({ payload, label, active }) => {
+    if (active) {
+      return (
+        <Box className="custom-tooltp" backgroundColor="rgba(203, 213, 224, 0.2)">
+          <p className="label">{label}</p>
+          <p className="intro">{ status === 'Case' ? 'Case' : status === 'Deaths' ? 'Deaths' : 'Recovered'}: {payload[0]?.value}</p>
+        </Box>
+      );
+    }
+    return null;
+  }
   
   return <div>
-    <ResponsiveContainer width="90%" height={400}>
+    <ResponsiveContainer width="100%" height={400}>
                 <AreaChart data={data} margin={{
                   top: 60,
-                  left: 30,
+                  left: 20,
                   right: 0,
                   bottom: 60
                 }}>
@@ -21,19 +34,19 @@ const LineChartNew = ({ data, status }) => {
                     </linearGradient>
                   </defs>
                   <Area 
-                    dataKey={status === "Case" ? "positif" : status === "Deaths" ? "meninggal" : "dirawat"}
+                    dataKey={status === "Case" ? "positif" : status === "Deaths" ? "meninggal" : "sembuh"}
                     stroke="#2451B7" 
                     fill="url(#color)"
                   
                   />
                   <XAxis dataKey="tanggal" />
                   <YAxis  
-                    dataKey={status === "Case" ? "positif" : status === "Deaths" ? "meninggal" : "dirawat"}
+                    dataKey={status === "Case" ? "positif" : status === "Deaths" ? "meninggal" : "sembuh"}
                     axisLine={false} 
                     tickLine={false} 
                     tickFormatter={number => `${number.toFixed()}`} 
                   />
-                  <Tooltip />
+                  <Tooltip content={ <CustomTooltip /> } />
                   <CartesianGrid opacity={0.4} vertical={false} />
                 </AreaChart>
               </ResponsiveContainer>

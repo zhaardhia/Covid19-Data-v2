@@ -19,6 +19,23 @@ const Province = () => {
   const handleChange = value => {
     setSelectedValue(value);       
   }
+  const colourStyles = {
+    backgroundColor: "#22AABD",
+    control: (styles) => ({ 
+      ...styles, 
+      // backgroundColor: "#22AABD",
+      
+    }),
+    option: (styles, { isDisabled }) => {
+      return {
+        ...styles,
+        // backgroundColor: isDisabled ? "red" : "white",
+        // color: "#FFF",
+        // cursor: isDisabled ? "not-allowed" : "default"
+        color: "black"
+      };
+    }
+  };
 
   const loadOptions =  (inputValue) => {
     try {
@@ -45,38 +62,32 @@ const Province = () => {
           loadOptions={loadOptions}
           onInputChange={handleInputChange}
           onChange={handleChange}
+          styles={colourStyles}
         />
       </div>
       <Box m="1rem 0 2rem 0">
-        {/* <h1>{selectedValue?.provinsi}</h1> */}
-        <Text fontSize="2xl" fontWeight="light">DKI Jakarta</Text>
-        {/* <p>Last Update: {selectedValue?.last_date}</p> */}
-        <Text fontSize="md" fontWeight="thin">Last Update: 2022-01-29</Text>
-        <Grid textColor="white" margin="2rem 0" templateColumns={['repeat(2, 2fr)', 'repeat(2, 2fr)', 'repeat(4, 1fr)']} gap='6' textAlign='center'>
-          <GridItem background="#E4711E" borderRadius="20px" lineHeight="" p="" shadow="lg">
-            {/* <p>{selectedValue?.kasus}</p> */}
-            <Text fontSize="lg" fontWeight="light">201.692.437</Text>
+        <Text fontSize="2xl" fontWeight="light">{selectedValue?.provinsi}</Text>
+        <Text fontSize="md" fontWeight="thin">Last Update: {selectedValue?.last_date}</Text>
+        <Grid textColor="white" margin="2rem 0" templateColumns={['repeat(2, 2fr)', 'repeat(2, 2fr)', 'repeat(2, 2fr)', 'repeat(4, 1fr)']} gap='6' textAlign='center'>
+          <GridItem background="#E4711E" borderRadius="20px" lineHeight="" p="3" height="6rem" shadow="lg">
+            <Text fontSize="lg" fontWeight="light">{selectedValue?.kasus}</Text>
             <Text fontWeight="light">Case</Text>
-            {/* <p>+{selectedValue?.penambahan?.positif}</p> */}
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+200</Text>
+            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+{selectedValue?.penambahan?.positif}</Text>
           </GridItem>
-          <GridItem background="#DA9360" borderRadius="20px" p="" shadow="lg">
-            {/* <p>{selectedValue?.dirawat}</p> */}
-            <Text fontSize="lg" fontWeight="light">201.692.437</Text>
+          <GridItem background="#DA9360" borderRadius="20px" p="3" height="6rem" shadow="lg">
+            <Text fontSize="lg" fontWeight="light">{selectedValue?.dirawat}</Text>
             <Text fontWeight="light">Active</Text>
           </GridItem>
-          <GridItem background="#22AABD" borderRadius="20px" p="" shadow="lg">
-            {/* <p>{selectedValue?.sembuh}</p> */}
-            <Text fontSize="lg" fontWeight="light">201.692.437</Text>
+          <GridItem background="#22AABD" borderRadius="20px" p="3" height="6rem" shadow="lg">
+            <Text fontSize="lg" fontWeight="light">{selectedValue?.sembuh}</Text>
             <Text fontWeight="light">Recovered</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+200</Text>
-            {/* <p>+{selectedValue?.penambahan?.sembuh}</p> */}
+            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+{selectedValue?.penambahan?.sembuh}</Text>
           </GridItem>
-          <GridItem background="#BD2222" borderRadius="20px" p="" shadow="lg">
+          <GridItem background="#BD2222" borderRadius="20px" p="3" height="6rem" shadow="lg">
             {/* <p>{selectedValue?.meninggal}</p> */}
-            <Text fontSize="lg" fontWeight="light">201.692.437</Text>
+            <Text fontSize="lg" fontWeight="light">{selectedValue?.meninggal}</Text>
             <Text fontWeight="light">Recovered</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+200</Text>
+            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+{selectedValue?.penambahan?.meninggal}</Text>
           </GridItem>
         </Grid>
         <BarChartProvince dataProvince={selectedValue} />
