@@ -31,7 +31,7 @@ const IndoMain = ({ dataMain }) => {
           </Text>
           <Text fontWeight="light">Recovered</Text>
           <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
-            +<CountUp end={dataMain.total?.sembuh} duration={3} separator="." />
+            +<CountUp end={dataMain.penambahan?.sembuh} duration={3} separator="." />
           </Text>
         </GridItem>
         <GridItem background="#BD2222" borderRadius="20px" p="3" height="6rem" shadow="lg">
