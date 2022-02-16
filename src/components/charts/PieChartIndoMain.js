@@ -1,13 +1,11 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react';
-import { Bar, Line, Pie, Polar } from "react-chartjs-2";
-import { delimiter } from '../../utils/delimiter';
+import { Pie } from "react-chartjs-2";
 // import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'recharts';
 
 const PieChartIndoMain = ({ dataMain }) => {
-  const dataMainTotal = dataMain.total;
   const dataMainAdded = dataMain.penambahan
-  console.log(dataMainTotal, dataMainAdded)
+
   return (
     <Box width="100%" height={['12rem', '15rem', '20rem']} mt="2rem">
       <Pie

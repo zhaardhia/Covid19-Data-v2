@@ -10,7 +10,7 @@ const Province = () => {
   const [selectedValue, setSelectedValue] = useState(null);
 
   useEffect(() => {
-    console.log(selectedValue)
+
   }, [selectedValue])
 
   const handleInputChange = value => {

@@ -1,6 +1,6 @@
 import React from 'react';
 // import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Bar, Line, Pie, Polar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 const BarChartProvince = ({ dataProvince }) => {
   return (
@@ -10,7 +10,7 @@ const BarChartProvince = ({ dataProvince }) => {
           labels: ['Case', 'Active', 'Recovered', 'Death'],
           datasets: [
             {
-              label: '# of votes',
+              label: ['Case', 'Active', 'Recovered', 'Death'],
               data: [dataProvince?.kasus, dataProvince?.dirawat, dataProvince?.sembuh, dataProvince?.meninggal],
               backgroundColor: [
                 'rgba(228, 113, 30, 0.7)',
