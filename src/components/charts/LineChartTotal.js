@@ -1,16 +1,19 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, useColorModeValue } from '@chakra-ui/react';
 import { 
     ResponsiveContainer, AreaChart, XAxis, YAxis, Area, Tooltip, CartesianGrid
   } from 'recharts';
+import { delimiter } from '../../utils/delimiter';
 
 const LineChartTotal = ({ data, status }) => {
+  const bgToolTip = useColorModeValue('#0F3145', '#CBD5E0');
+  const fontColor = useColorModeValue('#fff', '#000');
   const CustomTooltip = ({ payload, label, active }) => {
     if (active) {
       return (
-        <Box className="custom-tooltp" backgroundColor="#CBD5E0">
+        <Box className="custom-tooltp" backgroundColor={bgToolTip} borderRadius="10px" padding="1rem" color={fontColor}>
           <p className="label">{label}</p>
-          <p className="intro">{ status === 'Case' ? 'Case' : status === 'Deaths' ? 'Deaths' : 'Recovered'}: {payload[0]?.value}</p>
+          <p className="intro">{ status === 'Case' ? 'Case' : status === 'Deaths' ? 'Deaths' : 'Recovered'}: {delimiter(payload[0]?.value)}</p>
         </Box>
       );
     }

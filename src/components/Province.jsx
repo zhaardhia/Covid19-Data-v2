@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import AsyncSelect from 'react-select/async';
 import BarChartProvince from './charts/BarChartProvince';
+import CountUp from 'react-countup';
 
 const Province = () => {
   const [inputValue, setValue] = useState('');
@@ -66,28 +67,43 @@ const Province = () => {
         />
       </div>
       <Box m="1rem 0 2rem 0">
-        <Text fontSize="2xl" fontWeight="light">{selectedValue?.provinsi}</Text>
+        <Text fontSize="2xl" fontWeight="light">
+          {selectedValue?.provinsi}
+        </Text>
         <Text fontSize="md" fontWeight="thin">Last Update: {selectedValue?.last_date}</Text>
         <Grid textColor="white" margin="2rem 0" templateColumns={['repeat(2, 2fr)', 'repeat(2, 2fr)', 'repeat(2, 2fr)', 'repeat(4, 1fr)']} gap='6' textAlign='center'>
           <GridItem background="#E4711E" borderRadius="20px" lineHeight="" p="3" height="6rem" shadow="lg">
-            <Text fontSize="lg" fontWeight="light">{selectedValue?.kasus}</Text>
+            <Text fontSize="lg" fontWeight="light">
+              <CountUp end={selectedValue?.kasus} duration={3} separator="," />
+            </Text>
             <Text fontWeight="light">Case</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+{selectedValue?.penambahan?.positif}</Text>
+            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
+              +<CountUp end={selectedValue?.penambahan?.positif} duration={3} separator="," />
+            </Text>
           </GridItem>
           <GridItem background="#DA9360" borderRadius="20px" p="3" height="6rem" shadow="lg">
-            <Text fontSize="lg" fontWeight="light">{selectedValue?.dirawat}</Text>
+            <Text fontSize="lg" fontWeight="light">
+            <CountUp end={selectedValue?.dirawat} duration={3} separator="," />
+            </Text>
             <Text fontWeight="light">Active</Text>
           </GridItem>
           <GridItem background="#22AABD" borderRadius="20px" p="3" height="6rem" shadow="lg">
-            <Text fontSize="lg" fontWeight="light">{selectedValue?.sembuh}</Text>
+            <Text fontSize="lg" fontWeight="light">
+              <CountUp end={selectedValue?.sembuh} duration={3} separator="," />
+            </Text>
             <Text fontWeight="light">Recovered</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+{selectedValue?.penambahan?.sembuh}</Text>
+            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
+              +<CountUp end={selectedValue?.penambahan.sembuh} duration={3} separator="," />
+            </Text>
           </GridItem>
           <GridItem background="#BD2222" borderRadius="20px" p="3" height="6rem" shadow="lg">
-            {/* <p>{selectedValue?.meninggal}</p> */}
-            <Text fontSize="lg" fontWeight="light">{selectedValue?.meninggal}</Text>
+            <Text fontSize="lg" fontWeight="light">
+              <CountUp end={selectedValue?.meninggal} duration={3} separator="," />
+            </Text>
             <Text fontWeight="light">Recovered</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">+{selectedValue?.penambahan?.meninggal}</Text>
+            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
+              +<CountUp end={selectedValue?.penambahan.meninggal} duration={3} separator="," />
+            </Text>
           </GridItem>
         </Grid>
         <BarChartProvince dataProvince={selectedValue} />

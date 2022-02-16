@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { Bar, Line, Pie, Polar } from "react-chartjs-2";
+import { delimiter } from '../../utils/delimiter';
 // import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'recharts';
 
 const PieChartIndoMain = ({ dataMain }) => {
