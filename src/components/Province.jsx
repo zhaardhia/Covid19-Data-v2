@@ -40,7 +40,7 @@ const Province = () => {
 
   const loadOptions =  (inputValue) => {
     try {
-      return  fetch(`http://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi/more?name=${inputValue}`).then(res => res.json());
+      return  fetch(`https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi/more?name=${inputValue}`).then(res => res.json());
     } catch (error) {
       console.log(error)
     }

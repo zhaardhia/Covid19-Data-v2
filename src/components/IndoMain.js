@@ -22,7 +22,7 @@ const IndoMain = ({ dataMain }) => {
           </Text>
           <Text fontWeight="light">Active</Text>
           <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
-            +<CountUp end={dataMain.penambahan?.positif} duration={3} separator="." />
+            +<CountUp end={dataMain.penambahan?.dirawat} duration={3} separator="." />
           </Text>
         </GridItem>
         <GridItem background="#22AABD" borderRadius="20px" p="3" height="6rem" shadow="lg">
