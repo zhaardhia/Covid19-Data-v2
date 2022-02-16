@@ -100,7 +100,7 @@ const Province = () => {
             <Text fontSize="lg" fontWeight="light">
               <CountUp end={selectedValue?.meninggal} duration={3} separator="," />
             </Text>
-            <Text fontWeight="light">Recovered</Text>
+            <Text fontWeight="light">Death</Text>
             <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
               +<CountUp end={selectedValue?.penambahan.meninggal} duration={3} separator="," />
             </Text>

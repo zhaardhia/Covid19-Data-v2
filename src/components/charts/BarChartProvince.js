@@ -10,7 +10,7 @@ const BarChartProvince = ({ dataProvince }) => {
           labels: ['Case', 'Active', 'Recovered', 'Death'],
           datasets: [
             {
-              label: ['Case', 'Active', 'Recovered', 'Death'],
+              label: 'Datasets',
               data: [dataProvince?.kasus, dataProvince?.dirawat, dataProvince?.sembuh, dataProvince?.meninggal],
               backgroundColor: [
                 'rgba(228, 113, 30, 0.7)',
