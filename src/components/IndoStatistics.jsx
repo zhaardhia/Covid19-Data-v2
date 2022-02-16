@@ -87,12 +87,18 @@ const IndoStatistics = () => {
             options={optionsData}
             onChange={handleDataChange}
             styles={colourStyles}
+            isSearchable={false}
+            closeMenuOnSelect
+            closeMenuOnScroll
           />
           <Select 
             defaultValue={optionsSort[0]} 
             options={optionsSort} 
             onChange={handleSortChange}
             styles={colourStyles}
+            isSearchable={false}
+            closeMenuOnSelect
+            closeMenuOnScroll
           />
         </Flex>
       </Flex>
