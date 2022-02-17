@@ -5,7 +5,7 @@ import Select, { components } from 'react-select'
 import LineChartNew from "../components/charts/LineChartNew";
 import LineChartTotal from "../components/charts/LineChartTotal";
 import filterData from "../utils/filterData";
-import { Flex, Text, Box } from '@chakra-ui/react';
+import { Flex, Text, Box, ScaleFade } from '@chakra-ui/react';
 
 const optionsSort = [
   { value: 7, label: 'Last 7 days' },
@@ -102,15 +102,18 @@ const IndoStatistics = () => {
           />
         </Flex>
       </Flex>
-      <Box borderRadius="20px" p="">
-        <Text fontSize="lg" fontWeight="thin">New {status}</Text>
-        <LineChartNew data={dataSorted} status={status} />
-      </Box>
-      <Box borderRadius="20px" p="">
-        <Text fontSize="lg" fontWeight="thin">Total {status}</Text>
-        <LineChartTotal data={dataSorted} status={status}/>
-      </Box>
-      
+      <ScaleFade initialScale={0.4} in={dataSorted}>
+        <Box borderRadius="20px" p="">
+          <Text fontSize="lg" fontWeight="thin">New {status}</Text>
+          <LineChartNew data={dataSorted} status={status} />
+        </Box>
+      </ScaleFade>
+      <ScaleFade initialScale={0.2} in={dataSorted}>
+        <Box borderRadius="20px" p="">
+          <Text fontSize="lg" fontWeight="thin">Total {status}</Text>
+          <LineChartTotal data={dataSorted} status={status}/>
+        </Box>
+      </ScaleFade>
     </Box>
   );
 };
