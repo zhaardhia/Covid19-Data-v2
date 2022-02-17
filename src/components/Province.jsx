@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text, ScaleFade, Collapse } from '@chakra-ui/react';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import AsyncSelect from 'react-select/async';
@@ -67,46 +67,64 @@ const Province = () => {
         />
       </div>
       <Box m="1rem 0 2rem 0">
-        <Text fontSize="2xl" fontWeight="light">
-          {selectedValue?.provinsi}
-        </Text>
-        <Text fontSize="md" fontWeight="thin">Last Update: {selectedValue?.last_date}</Text>
+        <Collapse in={selectedValue} animateOpacity>
+          <Text fontSize="2xl" fontWeight="light">
+            {selectedValue?.provinsi}
+          </Text>
+          <Text fontSize="md" fontWeight="thin">Last Update: {selectedValue?.last_date}</Text>
+        </Collapse>
         <Grid textColor="white" margin="2rem 0" templateColumns={['repeat(2, 2fr)', 'repeat(2, 2fr)', 'repeat(2, 2fr)', 'repeat(4, 1fr)']} gap='6' textAlign='center'>
-          <GridItem background="#E4711E" borderRadius="20px" lineHeight="" p="3" height="6rem" shadow="lg">
-            <Text fontSize="lg" fontWeight="light">
-              <CountUp end={selectedValue?.kasus} duration={3} separator="," />
-            </Text>
-            <Text fontWeight="light">Case</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
-              +<CountUp end={selectedValue?.penambahan?.positif} duration={3} separator="," />
-            </Text>
-          </GridItem>
-          <GridItem background="#DA9360" borderRadius="20px" p="3" height="6rem" shadow="lg">
-            <Text fontSize="lg" fontWeight="light">
-            <CountUp end={selectedValue?.dirawat} duration={3} separator="," />
-            </Text>
-            <Text fontWeight="light">Active</Text>
-          </GridItem>
-          <GridItem background="#22AABD" borderRadius="20px" p="3" height="6rem" shadow="lg">
-            <Text fontSize="lg" fontWeight="light">
-              <CountUp end={selectedValue?.sembuh} duration={3} separator="," />
-            </Text>
-            <Text fontWeight="light">Recovered</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
-              +<CountUp end={selectedValue?.penambahan.sembuh} duration={3} separator="," />
-            </Text>
-          </GridItem>
-          <GridItem background="#BD2222" borderRadius="20px" p="3" height="6rem" shadow="lg">
-            <Text fontSize="lg" fontWeight="light">
-              <CountUp end={selectedValue?.meninggal} duration={3} separator="," />
-            </Text>
-            <Text fontWeight="light">Death</Text>
-            <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
-              +<CountUp end={selectedValue?.penambahan.meninggal} duration={3} separator="," />
-            </Text>
-          </GridItem>
+          <ScaleFade initialScale={0} in={selectedValue} >
+            <GridItem background="#E4711E" borderRadius="20px" lineHeight="" p="3" height="6rem" shadow="lg">
+              
+                <Text fontSize="lg" fontWeight="light">
+                  <CountUp end={selectedValue?.kasus} duration={3} separator="," />
+                </Text>
+                <Text fontWeight="light">Case</Text>
+                <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
+                  +<CountUp end={selectedValue?.penambahan?.positif} duration={3} separator="," />
+                </Text>
+            </GridItem>
+          </ScaleFade>
+
+          <ScaleFade initialScale={0.2} in={selectedValue} >
+            <GridItem background="#DA9360" borderRadius="20px" p="3" height="6rem" shadow="lg">
+              <Text fontSize="lg" fontWeight="light">
+              <CountUp end={selectedValue?.dirawat} duration={3} separator="," />
+              </Text>
+              <Text fontWeight="light">Active</Text>
+            </GridItem>
+          </ScaleFade>
+
+          <ScaleFade initialScale={0.4} in={selectedValue} >
+            <GridItem background="#22AABD" borderRadius="20px" p="3" height="6rem" shadow="lg">
+              <Text fontSize="lg" fontWeight="light">
+                <CountUp end={selectedValue?.sembuh} duration={3} separator="," />
+              </Text>
+              <Text fontWeight="light">Recovered</Text>
+              <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
+                +<CountUp end={selectedValue?.penambahan.sembuh} duration={3} separator="," />
+              </Text>
+            </GridItem>
+          </ScaleFade>
+
+          <ScaleFade initialScale={0.6} in={selectedValue}>
+            <GridItem background="#BD2222" borderRadius="20px" p="3" height="6rem" shadow="lg">
+              <Text fontSize="lg" fontWeight="light">
+                <CountUp end={selectedValue?.meninggal} duration={3} separator="," />
+              </Text>
+              <Text fontWeight="light">Death</Text>
+              <Text fontStyle="italic" fontSize="sm" fontWeight="thin">
+                +<CountUp end={selectedValue?.penambahan.meninggal} duration={3} separator="," />
+              </Text>
+            </GridItem>
+          </ScaleFade>
         </Grid>
-        <BarChartProvince dataProvince={selectedValue} />
+
+        <ScaleFade initialScale={0.4} in={selectedValue}>
+          <BarChartProvince dataProvince={selectedValue} />
+        </ScaleFade>
+        
       </Box>
     </div>
   );
