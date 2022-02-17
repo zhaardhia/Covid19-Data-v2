@@ -14,9 +14,16 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
+        name: 'Covid 19 Data',
+        short_name: 'CovidData',
+        start_url: '/',
+        background_color: "#E8F4F5",
+        theme_color: "#E8F4F5",
         icon: 'src/images/indocovid.PNG',
+        crossOrigin: 'use-credentials',
       },
     },
+    "gatsby-plugin-offline",
   ],
   
 };
