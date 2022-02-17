@@ -22,31 +22,15 @@ const Indonesia = () => {
     setDataMainLoad(false)
   }
   
-  const MainComponent = ({ dataMain, dataMainLoad }) => {
-    return (
-      <Box>
-        {dataMainLoad ? <Spinner size="lg" /> : <IndoHeader dataMain={dataMain} />}
-            
-            <Flex width="100%" justifyContent="center" flexDirection={['column', 'column', 'row']} >
-              <IndoMain dataMain={dataMain} />
-              <Flex flexDirection="column" width={['85%', '80%', '40%']} ml={['auto', 'auto', '7rem']} mr={['auto', 'auto', '0']} >
-                <IndoStatistics />
-                <Province />
-              </Flex>
-            </Flex>
-          </Box>
-    )
-  }
     return(
       <div>
-        {/* <MainComponent dataMain={dataMain} dataMainLoad={dataMainLoad} /> */}
         <Box>
         <IndoHeader dataMain={dataMain} />
           <Flex width="100%" justifyContent="center" flexDirection={['column', 'column', 'row']} >
-          {dataMainLoad ? <Spinner size="lg" marginTop="7rem" /> : <IndoMain dataMain={dataMain} />}
+          {dataMainLoad ? <Spinner size="xl" m='7rem auto' /> : <IndoMain dataMain={dataMain} />}
             <Flex flexDirection="column" width={['85%', '80%', '40%']} ml={['auto', 'auto', '7rem']} mr={['auto', 'auto', '0']} >
-            {dataMainLoad ? <Spinner size="xl" marginTop="5rem" marginLeft="20rem" /> : <IndoStatistics />}
-            {dataMainLoad ? <Spinner size="xl" marginTop="5rem" marginLeft="20rem" /> : <Province />}  
+            {dataMainLoad ? <Spinner size="xl" m='5rem auto' /> : <IndoStatistics />}
+            {dataMainLoad ? <Spinner size="xl" m='5rem auto' /> : <Province />}  
             </Flex>
           </Flex>
         </Box>
