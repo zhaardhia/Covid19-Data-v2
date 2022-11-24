@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Box, Text, Flex, useColorModeValue } from "@chakra-ui/react";
-import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage, Img } from "gatsby-plugin-image";
 import { ThemeToggle } from "./theme-toggle";
 import { motion } from "framer-motion";
 
@@ -11,7 +11,7 @@ const Navbar = () => {
     const btnMode = useColorModeValue('#CBD5E0', '#1A365D')
     return (
         <Flex as="header" position="fixed" top="0" left="0" w="100%" zIndex="modal" background={navColor} color={fontColor} backdropFilter="saturate(180%) blur(5px)" p={['3', '3', '3']} alignItems="center" justifyContent="center" shadow="xl">
-            <StaticImage src="../images/world.png" alt="World Image" width={80}/>
+            <StaticImage src="../images/world.png" alt="World Image" width={80} placeholder="none" />
             <div>
                 <Text fontSize='2xl' align="start">Covid - 19 Statistics</Text>
                 <Text fontSize='xs' align="start">Stay Safe, Covid Still Alive</Text>

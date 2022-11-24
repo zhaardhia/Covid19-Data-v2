@@ -40,9 +40,5 @@
     "recharts": "^2.1.8",
     "sass": "^1.45.1"
   },
-  "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "gatsby-plugin-postcss": "^5.4.0",
-    "postcss": "^8.4.5"
-  }
+  "devDependencies": {}
 }

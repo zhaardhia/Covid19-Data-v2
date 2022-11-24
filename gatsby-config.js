@@ -4,8 +4,14 @@ module.exports = {
     title: "CovidWebApp",
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     "gatsby-plugin-sass",
-    "gatsby-plugin-postcss",
     "@chakra-ui/gatsby-plugin",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
@@ -17,8 +23,9 @@ module.exports = {
         name: 'Covid 19 Data',
         short_name: 'CovidData',
         start_url: '/',
-        background_color: "#E8F4F5",
-        theme_color: "#E8F4F5",
+        background_color: "#0F3145",
+        theme_color: "#0F3145",
+        display: 'standalone',
         icon: 'src/images/indocovid.PNG',
         crossOrigin: 'use-credentials',
       },
