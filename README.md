@@ -1,54 +1,33 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# covid-web-app
 
-## 🚀 Quick start
+> Personal project for visualise Covid Statistics data in Indonesia. Live on [covid-web-app](https://covid-data19.netlify.app/)
 
-1.  **Create a Gatsby site.**
+### Stack used
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+- [Gatsby.js](https://www.gatsbyjs.com/)
+- [Chakra UI](https://chakra-ui.com/)
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+### Developing
 
-2.  **Start developing.**
+A Node.js LTS setup with [npm](https://www.npmjs.com/) is recommended.
 
-    Navigate into your new site’s directory and start it up.
+In the project directory, you can run:
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```bash
+# install dependencies
+npm install
 
-3.  **Open the code and start customizing!**
+# serve with hot reload at localhost:3000
+npm start
 
-    Your site is now running at http://localhost:8000!
+# build for production
+npm build
+```
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+### Directory structure
 
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+- `src/components` - UI/Layout components that are used globally throughout project.
+- `src/images` - Images that are used as Default Value Image.
+- `src/pages` - Pages Covid Web App Website.
+- `src/services` - JS files used for API Variable & fetching API data method.
+- `/public` - Gatsby.js public directory, used for storing static assets.
